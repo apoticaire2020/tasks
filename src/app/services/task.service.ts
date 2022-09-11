@@ -14,7 +14,13 @@ export class TaskService {
   findAll(){
     return this.http.get<Task[]>(this.apiUrl);
   }
-  delete(id: any){
+  delete(id){
     return this.http.delete( `${this.apiUrl}/${id}` );
+  }
+  persiste(task){
+    return this.http.post<Task>(this.apiUrl, task);
+  }
+  completed(id , completed){
+     return this.http.patch(`${this.apiUrl}/${id}`,{completed: !completed});
   }
 }

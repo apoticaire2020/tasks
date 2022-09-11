@@ -13,16 +13,17 @@
         <div class="form-group">
             <label for="label"></label>
 
-            <input id="label" type="text" class="form-control"  />
+            <input  [(ngModel)]="myTask.label" id="label" type="text" class="form-control"  />
 
         </div>
         <div class="form-check my-2">
           <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" >
+            <input [(ngModel)]="myTask.completed" type="checkbox" class="form-check-input" >
             completed
           </label>
         </div>
-        <button class="btn btn-success btn-block">
+      
+        <button (click)="persistTask()"  class="btn btn-success btn-block">
             <i class="fa fa-send">
 
             </i>new task</button>
@@ -37,7 +38,7 @@
                <i class="fa fa-pencil"></i>
           </button> 
           {{task.label}}
-            <span [ngClass]="{
+            <span (click)="toggleCompleted(task)" [ngClass]="{
               'badge-info ': task.completed,
               'badge-danger ': !task.completed
             }" class="badge badge-danger badge-pill">
