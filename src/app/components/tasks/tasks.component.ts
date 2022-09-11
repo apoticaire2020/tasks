@@ -13,6 +13,7 @@ export class TasksComponent implements OnInit {
   constructor(private tasksService: TaskService) { }
 
   ngOnInit(): void {
+    this.getTask();
   }
 getTask() {
    this.tasksService.findAll()
