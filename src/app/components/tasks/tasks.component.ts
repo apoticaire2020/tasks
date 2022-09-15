@@ -8,11 +8,17 @@ import { Task } from 'src/app/models/task';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
+  editForm = false;
+  showForm=false;
+  searchText='' ;
+
   myTask: Task={
     label: '',
     completed: false,
   }
   tasks:Task[] = [];
+  resulTask:Task[]=[];
+
   constructor(private tasksService: TaskService) { }
 
   ngOnInit(): void {
@@ -20,7 +26,7 @@ export class TasksComponent implements OnInit {
   }
 getTask() {
    this.tasksService.findAll()
-   .subscribe(tasks=>this.tasks=tasks);
+   .subscribe(tasks=>this.resulTask= this.tasks=tasks);
 }
 deleteTask(id){
    this.tasksService.delete(id).subscribe(()=>{
@@ -31,6 +37,7 @@ persistTask(){
   return this.tasksService.persiste(this.myTask).subscribe(
     (task)=>{this.tasks=[task,...this.tasks];
              this.resetTasks();
+             this.showForm=false;
     }
   )
 }
@@ -46,5 +53,22 @@ toggleCompleted( task){
       task.completed=!task.completed
      }
   )
+}
+editTask(task){
+    this.myTask=task;
+    this.editForm=true;
+    this.showForm=true;
+}
+updateTask() {
+    this.tasksService.update(this.myTask).subscribe(
+      task=>{
+        this.resetTasks();
+        this.editForm=false;
+      }
+    )
+  }
+searchTask(){
+   this.resulTask=this.tasks.filter(
+    (task)=>task.label.toLowerCase().includes(this.searchText.toLowerCase()))
 }
 }

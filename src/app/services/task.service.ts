@@ -6,7 +6,7 @@ import { Task } from '../models/task';
 })
 export class TaskService {
 
-  apiUrl='http://localhost:5000/tasks';
+  apiUrl='http://localhost:3000/tasks';
 
 
   constructor(private http: HttpClient) { }
@@ -22,5 +22,8 @@ export class TaskService {
   }
   completed(id , completed){
      return this.http.patch(`${this.apiUrl}/${id}`,{completed: !completed});
+  }
+  update(task){
+    return this.http.put(`${this.apiUrl}/${task.id}` , task);
   }
 }

@@ -1,19 +1,44 @@
 {
   "tasks": [
     {
-      "label": "bokhari",
+      "label": "bokhari ",
       "completed": true,
       "id": 4
     },
     {
-      "label": "moqademma",
-      "completed": true,
-      "id": 5
-    },
-    {
-      "label": "coran",
+      "label": "coran karim",
       "completed": true,
       "id": 6
+    },
+    {
+      "label": "ibn taymiya",
+      "completed": true,
+      "id": 8
+    },
+    {
+      "label": "moslem",
+      "completed": true,
+      "id": 9
+    },
+    {
+      "label": "java",
+      "completed": true,
+      "id": 11
+    },
+    {
+      "label": "python",
+      "completed": false,
+      "id": 12
+    },
+    {
+      "label": "javascript ",
+      "completed": true,
+      "id": 13
+    },
+    {
+      "label": "cpp",
+      "completed": true,
+      "id": 14
     }
   ]
 }
